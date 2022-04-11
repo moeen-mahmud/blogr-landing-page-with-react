@@ -1,10 +1,20 @@
+import { Box } from "@mui/material";
+import { ThemeProvider } from "@mui/system";
+import Navbar from "./components/Navbar/Navbar";
+import useCustomTheme from "./hooks/useCustomTheme";
+
 function App() {
+  const { theme } = useCustomTheme();
+
   return (
-    <div>
-      <div className=" py-3 w-full bg-indigo-500 text-yellow-500">
-        <p className=" text-4xl font-sans">Hello World</p>
-      </div>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Box
+        bgcolor={theme.palette.background.default}
+        fontFamily={theme.typography.fontFamily}
+      >
+        <Navbar />
+      </Box>
+    </ThemeProvider>
   );
 }
 
